@@ -1222,7 +1222,7 @@ if First_Sea then
         Duration = 5 -- Set to nil to make the notification not disappear
     })
 
-    local Farming = Tabs.Main:AddSection("Farming")
+local Farming = Tabs.Main:AddSection("Farming")
 local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
 
     local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
