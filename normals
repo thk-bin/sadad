@@ -26,7 +26,7 @@ local Tabs = {
     Settings = Window:AddTab({ Title = "Tap Settings", Icon = "octagon" })
 }
 
-local Options = Fluent.Options          if First_Sea then
+local Options = Fluent.Options
 do
 
     do
