@@ -1214,7 +1214,6 @@ Tabs.Shop:AddButton({
 	end
 })
 
-do
     Fluent:Notify({
         Title = "Notification",
         Content = "This is a notification",
