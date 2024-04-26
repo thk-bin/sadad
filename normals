@@ -27,7 +27,7 @@ local Tabs = {
 
 local Options = Fluent.Options
 
-    do
+do
     Fluent:Notify({
         Title = "Notification",
         Content = "This is a notification",
@@ -38,27 +38,25 @@ local Options = Fluent.Options
 
 
     Tabs.Main:AddParagraph({
-        Title = "Note",
-        Content = "This is the Plow section!"
+        Title = "Paragraph",
+        Content = "This is a paragraph.\nSecond line!"
     })
 
 
 
     Tabs.Main:AddButton({
-        Title = "Code",
-        Description = "Verify All Codes",
+        Title = "Button",
+        Description = "Very important button",
         Callback = function()
             Window:Dialog({
-                Title = "Are you sure!",
-                Content = "Then agree to enter All Codes, Dude!",
+                Title = "Title",
+                Content = "This is a dialog",
                 Buttons = {
                     {
                         Title = "Confirm",
                         Callback = function()
                             print("Confirmed the dialog.")
                         end
- 
-
                     },
                     {
                         Title = "Cancel",
@@ -73,7 +71,7 @@ local Options = Fluent.Options
 
 
 
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Map", Default = false })
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Toggle", Default = false })
 
     Toggle:OnChanged(function()
         print("Toggle changed:", Options.MyToggle.Value)
