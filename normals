@@ -1,4 +1,3 @@
-
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -1214,36 +1213,6 @@ if First_Sea then
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2")
         end
     })
-
-    Fluent:Notify({
-        Title = "Notification",
-        Content = "This is a notification",
-        SubContent = "SubContent", -- Optional
-        Duration = 5 -- Set to nil to make the notification not disappear
-    })
-
-local Farming = Tabs.Main:AddSection("Farming")
-local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
-
-local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
-    Title = "Chọn Tốc Độ Đánh",
-    Description = "",
-    Values = listfastattack,
-    Multi = false,
-    Default = 1,
-})
-DropdownDelayAttack:SetValue("Fast Attack")
-DropdownDelayAttack:OnChanged(function(Value)
-_G.FastAttackZueszYTB_Mode = Value
-if _G.FastAttackZueszYTB_Mode == "Fast Attack" then
-	_G.Fast_Delay = 0.12
-elseif _G.FastAttackZueszYTB_Mode == "Normal Attack" then
-	_G.Fast_Delay = 0.2
-elseif _G.FastAttackZueszYTB_Mode == "Super Fast Attack" then
-	_G.Fast_Delay = 0.05
- end
-end)
-
 
 do
     Fluent:Notify({
