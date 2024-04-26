@@ -15,7 +15,7 @@ local Window = Fluent:CreateWindow({
 
 --Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "octagon" }),
+    Main = Window:AddTab({ Title = "Auto Map", Icon = "octagon" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "octagon" })
 }
 
@@ -32,25 +32,27 @@ do
 
 
     Tabs.Main:AddParagraph({
-        Title = "Paragraph",
-        Content = "This is a paragraph.\nSecond line!"
+        Title = "Note",
+        Content = "This is the Plow section!"
     })
 
 
 
     Tabs.Main:AddButton({
-        Title = "Button",
-        Description = "Very important button",
+        Title = "Code",
+        Description = "Verify All Codes",
         Callback = function()
             Window:Dialog({
-                Title = "Title",
-                Content = "This is a dialog",
+                Title = "Are you sure!",
+                Content = "Then agree to enter All Codes, Dude!",
                 Buttons = {
                     {
                         Title = "Confirm",
                         Callback = function()
                             print("Confirmed the dialog.")
                         end
+ 
+
                     },
                     {
                         Title = "Cancel",
