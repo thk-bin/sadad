@@ -1260,11 +1260,11 @@ Tabs.Shop:AddButton({
 
 local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Fram levels", Default = false })
 
-    Toggle:OnChanged(function()
-   _G.AutoLevel = Value
-    end)
+Toggle:OnChanged(function()
+_G.AutoLevel = Value
+end)
 
-    Options.MyToggle:SetValue(false)
+Options.MyToggle:SetValue(false)
 spawn(function()
         while task.wait() do
         if _G.AutoLevel then
@@ -1293,7 +1293,7 @@ spawn(function()
           v.HumanoidRootPart.CanCollide = false
           FarmPos = v.HumanoidRootPart.CFrame
           MonFarm = v.Name
-          --Click
+--Click
           until not _G.AutoLevel or not v.Parent or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
           bringmob = true
         end   
