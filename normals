@@ -1058,6 +1058,31 @@ SP = "Default"
 end
 end
 
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+ImageButton.Size = UDim2.new(0, 50, 0, 50)
+ImageButton.Draggable = true
+ImageButton.Image = "rbxassetid://3926305904"
+ImageButton.MouseButton1Down:connect(function()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
+end)
+
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
+	game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
+end
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
+	game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+end
+
 local ToggleRandomBone = Tabs.Shop:AddToggle("ToggleRandomBone", {Title = "Đổi xương",Description = "", Default = false })
 ToggleRandomBone:OnChanged(function(Value)  
 		_G.AutoRandomBone = Value
@@ -1215,6 +1240,7 @@ Tabs.Shop:AddButton({
 })
 
 
+
     Fluent:Notify({
         Title = "Notification",
         Content = "This is a notification",
@@ -1258,59 +1284,14 @@ Tabs.Shop:AddButton({
 
 
 
-    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Cày levels", Default = false })
+    local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Toggle", Default = false })
 
     Toggle:OnChanged(function()
-   _G.AutoLevel = Value
+        print("Toggle changed:", Options.MyToggle.Value)
     end)
 
     Options.MyToggle:SetValue(false)
-spawn(function()
-        while task.wait() do
-        if _G.AutoLevel then
-        pcall(function()
-          CheckLevel()
-          if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-          toTarget(CFrameQ)
-          if (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5 then
-          game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,QuestLv)
-          end
-          elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-          for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-          if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-          if v.Name == Ms then
-          repeat wait(_G.Fast_Delay)
-          AttackNoCoolDown()
-          bringmob = true
-          AutoHaki()
-          EquipTool(SelectWeapon)
-          toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
-          v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-          v.HumanoidRootPart.Transparency = 1
-          v.Humanoid.JumpPower = 0
-          v.Humanoid.WalkSpeed = 0
-          v.HumanoidRootPart.CanCollide = false
-          FarmPos = v.HumanoidRootPart.CFrame
-          MonFarm = v.Name
-          --Click
-          until not _G.AutoLevel or not v.Parent or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
-          bringmob = true
-        end   
-          end
-          end
-          for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"].EnemySpawns:GetChildren()) do
-          if string.find(v.Name,NameMon) then
-          if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude >= 10 then
-            toTarget(v.CFrame * CFrame.new(posX,posY,posZ))
-          end
-          end
-          end
-          end
-          end)
-        end
-        end
-        end)
+
 
     
     local Slider = Tabs.Main:AddSlider("Slider", {
