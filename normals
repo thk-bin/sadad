@@ -1,6 +1,3 @@
-||Auto Parry||
-
-
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local workspace = game:GetService("Workspace")
