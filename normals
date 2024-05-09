@@ -1251,6 +1251,18 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
 -- Hehe
 --------------------------------------------------------------------------------------------------------------------------------------------
+--Fix Lag
+for _,v in pairs(workspace:GetDescendants()) do
+if v.ClassName == "Part"
+or v.ClassName == "SpawnLocation"
+or v.ClassName == "WedgePart"
+or v.ClassName == "Terrain"
+or v.ClassName == "MeshPart" then
+v.Material = "Plastic"
+end
+end
+
+--------------------------------------------------------------------------------------------------------------------------------------------
 --Create Tabs
 local Farming = Tabs.Main:AddSection("Farming")
 local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
@@ -1385,6 +1397,141 @@ end)
         end
         end)
 
+
+
+
+        local ToggleCandy = Tabs.Main:AddToggle("ToggleCandy", {Title = "Auto Farm Candy ( Only Max Level )",Description = "VN: Cày Kẹo ( Chỉ Cấp Độ Tối Đa )", Default = false })
+        ToggleCandy:OnChanged(function(Value)
+           _G.AutoCandy = Value
+           if Value == false then
+            wait()
+            Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            wait()
+        end
+        end)
+        Options.ToggleCandy:SetValue(false)
+
+		local CandyPos = CFrame.new(-16603.197265625, 130.3873748779297, 1087.16455078125)
+		spawn(function()
+				  while wait() do 
+					  if _G.AutoCandy then
+						  pcall(function()
+							toTarget(CandyPos)
+							  if game:GetService("Workspace").Enemies:FindFirstChild("Isle Outlaw") or game:GetService("Workspace").Enemies:FindFirstChild("Island Boy") or game:GetService("Workspace").Enemies:FindFirstChild("Sun-kissed Warrior") or game:GetService("Workspace").Enemies:FindFirstChild("Isle Champion") then
+								  for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									  if v.Name == "Isle Outlaw" or v.Name == "Island Boy" or v.Name == "Sun-kissed Warrior" or v.Name == "Isle Champion" then
+										 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+											 repeat wait(_G.Fast_Delay)
+												 AttackNoCoolDown()
+                                                 bringmob = true
+												 AutoHaki()
+												 EquipTool(SelectWeapon)
+												 Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+												 v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+												 v.HumanoidRootPart.Transparency = 1
+												 v.Humanoid.JumpPower = 0
+												 v.Humanoid.WalkSpeed = 0
+												 v.HumanoidRootPart.CanCollide = false
+												 FarmPos = v.HumanoidRootPart.CFrame
+												 MonFarm = v.Name
+											  until not _G.AutoCandy or not v.Parent or v.Humanoid.Health <= 0
+                                              bringmob = false
+                                            end
+									  end
+								  end
+                                  Tween(CFrame.new(-16599.1484375, 154.2681121826172, -166.32186889648438))
+							end
+						end)
+					  end
+				  end
+			  end)
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+    local ToggleMobAura = Tabs.Main:AddToggle("ToggleMobAura", {
+        Title = "Kill Near | Mob Aura",
+        Description = "BINHACKLO",
+        Default = false })
+    ToggleMobAura:OnChanged(function(Value)
+        _G.AutoNear = Value
+        if Value == false then
+            wait()
+            Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            wait()
+        end
+    end)
+    Options.ToggleMobAura:SetValue(false)
+    spawn(function()
+        while wait(.1) do
+        if _G.AutoNear then
+        pcall(function()
+          for i,v in pairs (game.Workspace.Enemies:GetChildren()) do
+          if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+          if v.Name then
+          if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v:FindFirstChild("HumanoidRootPart").Position).Magnitude <= 5000 then
+            repeat wait(_G.Fast_Delay)
+                AttackNoCoolDown()
+                bringmob = true
+          AutoHaki()
+          EquipTool(SelectWeapon)
+          Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+          v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+          v.HumanoidRootPart.Transparency = 1
+          v.Humanoid.JumpPower = 0
+          v.Humanoid.WalkSpeed = 0
+          v.HumanoidRootPart.CanCollide = false
+          FarmPos = v.HumanoidRootPart.CFrame
+          MonFarm = v.Name
+          --Click
+          until not _G.AutoNear or not v.Parent or v.Humanoid.Health <= 0 or not game.Workspace.Enemies:FindFirstChild(v.Name)
+          bringmob = false
+        end
+          end
+          end
+          end
+          end)
+        end
+        end
+      end)
+
+
+    local ToggleCastleRaid = Tabs.Main:AddToggle("ToggleCastleRaid", {
+        Title = "Auto Castle Raid | Pirates Castle",
+        Description = "BINHACKLO", 
+        Default = false })
+    ToggleCastleRaid:OnChanged(function(Value)
+        _G.CastleRaid = Value
+    end)
+    Options.ToggleCastleRaid:SetValue(false)
+    spawn(function()
+        while wait() do
+            if _G.CastleRaid then
+                pcall(function()
+                    local CFrameCastleRaid = CFrame.new(-5496.17432, 313.768921, -2841.53027, 0.924894512, 7.37058015e-09, 0.380223751, 3.5881019e-08, 1, -1.06665446e-07, -0.380223751, 1.12297109e-07, 0.924894512)
+                    if (CFrame.new(-5539.3115234375, 313.800537109375, -2972.372314453125).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 then
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if _G.CastleRaid and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                                if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 2000 then
+                                    repeat wait(_G.Fast_Delay)
+                                        AttackNoCoolDown()
+                                        AutoHaki()
+                                        EquipTool(SelectWeapon)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                        Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                                    until v.Humanoid.Health <= 0 or not v.Parent or not _G.CastleRaid
+                                end
+                            end
+                        end
+                    else
+                        toTarget(CFrameCastleRaid)
+                     
+                      
+                    end
+                end)
+            end
+        end
+        end)
 
 
 
