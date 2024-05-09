@@ -14,7 +14,7 @@ local tween = game:GetService("TweenService")
 
 local Royx = Instance.new("ScreenGui")
 
-Royx.Name = "Royx"
+Royx.Name = "Binx"
 Royx.Parent = game:GetService("CoreGui").RobloxGui.Modules
 Royx.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
