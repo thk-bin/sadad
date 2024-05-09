@@ -1225,13 +1225,6 @@ Tabs.Main:AddButton({
     end
 })
 
-Fluent:Notify({
-    Title = "Notification",
-    Content = "Fix-Lag|all code|chest auto",
-    SubContent = "SubContent", -- Optional
-    Duration = 5 -- Set to nil to make the notification not disappear
-})
-
 Tabs.Main:AddButton({
     Title = "Redeem All Code",
     Description = "BINHACKLO",
@@ -1341,7 +1334,6 @@ or v.ClassName == "MeshPart" then
 v.Material = "Plastic"
 end
 end
-
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Create Tabs
 local Farming = Tabs.Main:AddSection("Farming")
