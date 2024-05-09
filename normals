@@ -1217,7 +1217,7 @@ Tabs.Shop:AddButton({
 
 Tabs.Main:AddButton({
     Title = "Auto Chest",
-    Description = "VN: Nhặt rương",
+    Description = "BINHACKLO",
     Callback = function()
         _G.JoinTeam = "Pirates"
         _G.Stop_If_Has_Items = true
@@ -1227,7 +1227,7 @@ Tabs.Main:AddButton({
 
 Tabs.Main:AddButton({
     Title = "Redeem All Code",
-    Description = "VN: Nhập All Code",
+    Description = "BINHACKLO",
     Callback = function()
         RedeemCode()
     end
@@ -1239,7 +1239,7 @@ Tabs.Main:AddButton({
 
     Tabs.Main:AddButton({
         Title = "Fps Booster",
-        Description = "VN: Giảm Lag",
+        Description = "BINHACKLO",
         Callback = function()
             FPSBooster()
         end
