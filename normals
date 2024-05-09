@@ -1,45 +1,111 @@
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-local window = DrRayLibrary:Load("UnitHub", "Default")
+local Window = Rayfield:CreateWindow({
+   Name = "CBin Hub-Blade Ball",
+   LoadingTitle = "CBin Hub",
+   LoadingSubtitle = "by binhacklo",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "CableLiarhub"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "Key is not needed",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Cbin253"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("Cbin253","freekey")
+   }
+})
 
-local tab = DrRayLibrary.newTab("Op armor", "ImageIdHere")
+local MainTab = Window:CreateTab("Home🏠", 4483362458) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
 
-tab.newToggle("", ", false, function(lol)
- _G.ez = lol
-while _G.ez do wait ()
-   local args = {
-    [1] = "King Seal Armor",
-    [2] = "Helmet"
-}
+Rayfield:Notify({
+   Title = "Excution Started",
+   Content = "Notification Content",
+   Duration = 5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Ok!",
+         Callback = function()
+         print("The user tapped Ok!")
+      end
+   },
+},
+})
 
-game:GetService("ReplicatedStorage").OtherThing.Tools:FireServer(unpack(args))
+local Button = MainTab:CreateButton({
+   Name = "Auto Parry",
+   Callback = function()
+  local Debug = false -- Set this to true if you want my debug output.
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
 
-local args = {
-    [1] = "Mumu Armor",
-    [2] = "Helmet"
-}
+local Player = Players.LocalPlayer or Players.PlayerAdded:Wait()
+local Remotes = ReplicatedStorage:WaitForChild("Remotes", 9e9) -- A second argument in waitforchild what could it mean?
+local Balls = workspace:WaitForChild("Balls", 9e9)
 
-game:GetService("ReplicatedStorage").OtherThing.Tools:FireServer(unpack(args))
+-- Functions
 
-local args = {
-    [1] = "Hardened Armor",
-    [2] = "Helmet"
-}
-
-game:GetService("ReplicatedStorage").OtherThing.Tools:FireServer(unpack(args))
-
-local args = {
-    [1] = "X-Mas Armor",
-    [2] = "Helmet"
-}
-
-game:GetService("ReplicatedStorage").OtherThing.Tools:FireServer(unpack(args))
-
-local args = {
-    [1] = "Little Shivering Armor",
-    [2] = "Helmet"
-}
-
-game:GetService("ReplicatedStorage").OtherThing.Tools:FireServer(unpack(args))
+local function print(...) -- Debug print.
+    if Debug then
+        warn(...)
+    end
 end
+
+local function VerifyBall(Ball) -- Returns nil if the ball isn't a valid projectile; true if it's the right ball.
+    if typeof(Ball) == "Instance" and Ball:IsA("BasePart") and Ball:IsDescendantOf(Balls) and Ball:GetAttribute("realBall") == true then
+        return true
+    end
+end
+
+local function IsTarget() -- Returns true if we are the current target.
+    return (Player.Character and Player.Character:FindFirstChild("Highlight"))
+end
+
+local function Parry() -- Parries.
+    Remotes:WaitForChild("ParryButtonPress"):Fire()
+end
+
+-- The actual code
+
+Balls.ChildAdded:Connect(function(Ball)
+    if not VerifyBall(Ball) then
+        return
+    end
+    
+    print(`Ball Spawned: {Ball}`)
+    
+    local OldPosition = Ball.Position
+    local OldTick = tick()
+    
+    Ball:GetPropertyChangedSignal("Position"):Connect(function()
+        if IsTarget() then -- No need to do the math if we're not being attacked.
+            local Distance = (Ball.Position - workspace.CurrentCamera.Focus.Position).Magnitude
+            local Velocity = (OldPosition - Ball.Position).Magnitude -- Fix for .Velocity not working. Yes I got the lowest possible grade in accuplacer math.
+            
+            print(`Distance: {Distance}\nVelocity: {Velocity}\nTime: {Distance / Velocity}`)
+        
+            if (Distance / Velocity) <= 10 then -- Sorry for the magic number. This just works. No, you don't get a slider for this because it's 2am.
+                Parry()
+            end
+        end
+        
+        if (tick() - OldTick >= 1/60) then -- Don't want it to update too quickly because my velocity implementation is aids. Yes, I tried Ball.Velocity. No, it didn't work.
+            OldTick = tick()
+            OldPosition = Ball.Position
+        end
+    end)
 end)
+   end,
+})
