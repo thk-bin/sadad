@@ -1058,7 +1058,7 @@ SP = "Default"
 end
 end
 
-local ToggleRandomBone = Tabs.Shop:AddToggle("ToggleRandomBone", {Title = "Đổi xương",Description = "", Default = false })
+local ToggleRandomBone = Tabs.Shop:AddToggle("ToggleRandomBone", {Title = "Random Bones",Description = "BIHACKLO", Default = false })
 ToggleRandomBone:OnChanged(function(Value)  
 		_G.AutoRandomBone = Value
 end)
@@ -1081,7 +1081,7 @@ spawn(function()
 
 Tabs.Shop:AddButton({
 	Title = "Mua nhảy liên tục",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
 	end
@@ -1091,7 +1091,7 @@ Tabs.Shop:AddButton({
 
 Tabs.Shop:AddButton({
 	Title = "Mua haki vũ trang",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
 	end
@@ -1102,7 +1102,7 @@ Tabs.Shop:AddButton({
 
 Tabs.Shop:AddButton({
 	Title = "Mua dịch chuyển (soru)",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
 	end
@@ -1111,7 +1111,7 @@ Tabs.Shop:AddButton({
 
 Tabs.Shop:AddButton({
 	Title = "Mua haki quan sát",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
 	end
@@ -1122,7 +1122,7 @@ local Mastery = Tabs.Shop:AddSection("Fighting Styles")
 
 Tabs.Shop:AddButton({
 	Title = "Mua black leg",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
 	end
@@ -1130,21 +1130,21 @@ Tabs.Shop:AddButton({
 
 Tabs.Shop:AddButton({
 	Title = "Mua electro",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
 	end
 })
 Tabs.Shop:AddButton({
 	Title = "Mua fishman karate",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
 	end
 })
 Tabs.Shop:AddButton({
 	Title = "Mua dragon claw",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
@@ -1152,21 +1152,21 @@ Tabs.Shop:AddButton({
 })
 Tabs.Shop:AddButton({
 	Title = "Mua superhuman",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
 	end
 })
 Tabs.Shop:AddButton({
 	Title = "Death Step",
-	Description = "Mua Death Step",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
 	end
 })
 Tabs.Shop:AddButton({
 	Title = "Mua sharkman karate",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
@@ -1174,21 +1174,21 @@ Tabs.Shop:AddButton({
 })
 Tabs.Shop:AddButton({
 	Title = "Mua electric claw",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
 	end
 })
 Tabs.Shop:AddButton({
 	Title = "Mua dragon talon",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
 	end
 })
 Tabs.Shop:AddButton({
 	Title = "Mua godhuman",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
 	end
@@ -1198,22 +1198,21 @@ Tabs.Shop:AddButton({
 local Mastery = Tabs.Shop:AddSection("Vật Phẩm Khác")
 
 Tabs.Shop:AddButton({
-	Title = "Hoàn trả chỉ số",
-	Description = "",
-	Callback = function()
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
-	end
-})
-Tabs.Shop:AddButton({
 	Title = "Đổi tộc",
-	Description = "",
+	Description = "BIHACKLO",
 	Callback = function()
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","1")
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2")
 	end
 })
-
+Tabs.Shop:AddButton({
+	Title = "Hoàn trả chỉ số",
+	Description = "BIHACKLO",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
+	end
+})
 
     Fluent:Notify({
         Title = "Notification",
@@ -1263,13 +1262,13 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
         Multi = false,
         Default = 1,
     })
-    DropdownDelayAttack:SetValue("Fast Attack")
+    DropdownDelayAttack:SetValue("Normal Attack")
     DropdownDelayAttack:OnChanged(function(Value)
     _G.FastAttackFaiFao_Mode = Value
 	if _G.FastAttackFaiFao_Mode == "Fast Attack" then
-		_G.Fast_Delay = 0.1
+		_G.Fast_Delay = 0.2
 	elseif _G.FastAttackFaiFao_Mode == "Normal Attack" then
-		_G.Fast_Delay = 0.15
+		_G.Fast_Delay = 0.20
 	elseif _G.FastAttackFaiFao_Mode == "Super Fast Attack" then
 		_G.Fast_Delay = 0
 	end
@@ -1329,7 +1328,7 @@ end)
 
     local ToggleLevel = Tabs.Main:AddToggle("ToggleLevel", {
         Title = "Auto Level",
-        Description = "VN: Cày Cấp Độ",
+        Description = "Fram Level",
         Default = false })
     ToggleLevel:OnChanged(function(Value)
         _G.AutoLevel = Value
